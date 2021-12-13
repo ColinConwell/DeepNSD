@@ -2,7 +2,7 @@
  
  This repository contains code and analysis for the ongoing DeepNSD project, an attempt to characterize the representational structure of human visual cortex with the massive [NSD](http://naturalscenesdataset.org/) fMRI dataset and a bountiful cornucopia of deep neural network models.
  
- A manuscript that details results obtained using this pipeline may be found at the reference below.
+ A [manuscript](https://openreview.net/pdf?id=i_xiyGq6FNT) that details results obtained using this pipeline may be found at the reference below.
  
  ```bibtex
  @inproceedings{conwell2021can,
