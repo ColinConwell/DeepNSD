@@ -61,17 +61,20 @@ class NeuralDataset:
 
         return Image.open(os.path.join(self.image_root, sample_image_path))
 
-    def get_rdms(self, group_vars, subset = None, response_data = None):
+    def get_rdms(self, group_vars):
         metadata = self.metadata.reset_index()
-        if subset is not None:
-            metadata = self.metadata.loc[subset,:].reset_index()
 
         groups = iterative_subset(metadata, self.index_name, group_vars)
 
-        if response_data is None:
-            response_data = self.response_data
-
         return get_rdm_by_subset(groups, response_data)
+    
+    def get_rdm_indices(self, group_vars):
+        assert np.array_equal(self.metadata.index, self.response_data.index)
+        
+        metadata = self.metadata.reset_index()
+        metadata['row_number'] = metadata.index
+        
+        return iterative_subset(metadata, 'row_number', group_vars)
         
 class NaturalScenesDataset(NeuralDataset):
     def __init__(self, dataset = 'demo', subset_idx = None):
@@ -103,5 +106,9 @@ class NaturalScenesDataset(NeuralDataset):
         if subset_idx is not None:
             self.response_data = self.response_data.loc[subset_idx,:]
             self.metadata = self.metadata.loc[subset_idx,:]
-        
+            
+        self.stimulus_data = self.stimulus_data.set_index('key').loc[self.response_data.columns].reset_index()
         self.stimulus_data['image_path'] = self.image_root + '/' + self.stimulus_data.image_name
+        
+        self.rdms = self.get_rdms(['roi_name', 'subj_id'])
+        self.rdm_indices = self.get_rdm_indices(['roi_name','subj_id'])
