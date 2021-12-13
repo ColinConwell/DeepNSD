@@ -85,12 +85,11 @@ class NaturalScenesDataset(NeuralDataset):
         self.image_root = os.path.join(data_dir, 'stimulus_set')
         
         path_set = [response_path, metadata_path, image_key_path]
-        print(path_set)
         if not all([os.path.exists(path) for path in path_set]):
             print('Downloading data from Google Drive to {}'.format(data_dir))
             tar_file = '{}/natural_scenes_demo.tar.bz2'.format(path_dir)
             gdown.download('https://drive.google.com/uc?export=download&id=16Qkj5g9uUUHiyRayJ_fCLR_nLpKO6S4i',
-                           output = tar_file)
+                           quiet = False, output = tar_file)
             extract_tar(tar_file, path_dir)
             
         self.stimulus_data = pd.read_csv(image_key_path)
