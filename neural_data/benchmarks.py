@@ -63,10 +63,11 @@ class NeuralDataset:
 
     def get_rdms(self, group_vars):
         metadata = self.metadata.reset_index()
+        index = self.index_name
 
-        groups = iterative_subset(metadata, self.index_name, group_vars)
+        groups = iterative_subset(metadata, index, group_vars)
 
-        return get_rdm_by_subset(groups, response_data)
+        return get_rdm_by_subset(groups, self.response_data)
     
     def get_rdm_indices(self, group_vars):
         assert np.array_equal(self.metadata.index, self.response_data.index)
