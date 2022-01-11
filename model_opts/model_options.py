@@ -62,7 +62,7 @@ def get_torchvision_transforms(model_type, input_type = 'PIL'):
 
 # Taskonomy Options ---------------------------------------------------------------------------
     
-def retrieve_taskonomy_encoder(model_name, verbose = False):
+def retrieve_taskonomy_encoder(model_name, pretrained = True, verbose = False):
     from visualpriors.taskonomy_network import TASKONOMY_PRETRAINED_URLS
     from visualpriors import taskonomy_network
     
@@ -73,6 +73,10 @@ def retrieve_taskonomy_encoder(model_name, verbose = False):
     model.load_state_dict(weights['state_dict'])
     
     return model
+
+def random_taskonomy_encoder():
+    from visualpriors import taskonomy_network
+    return taskonomy_network.TaskonomyEncoder()
 
 def define_taskonomy_options():
     taskonomy_options = {}
@@ -89,7 +93,7 @@ def define_taskonomy_options():
         
     taskonomy_options['random_weights_taskonomy'] = ({'model_name': 'random_weights', 'model_type': 'taskonomy',
                                                       'train_type': 'taskonomy', 'model_source': 'taskonomy',
-                                                      'call': 'taskonomy_network.TaskonomyEncoder()'})
+                                                      'call': 'random_taskonomy_encoder()'})
             
     return taskonomy_options
 
