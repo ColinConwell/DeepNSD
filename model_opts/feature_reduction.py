@@ -95,7 +95,7 @@ def get_feature_map_srps(feature_maps, n_projections = None, upsampling = True, 
          
     if isinstance(feature_maps, dict) and not save_outputs:
         srp_feature_maps = {}
-        for feature_map_name in tqdm(feature_maps, desc = 'SRP Extraction (Layer)'):
+        for feature_map_name in tqdm(list(feature_maps), desc = 'SRP Extraction (Layer)'):
             srp_feature_maps[feature_map_name] = get_srps(feature_maps[feature_map_name])
             
         if delete_originals:
@@ -110,7 +110,7 @@ def get_feature_map_srps(feature_maps, n_projections = None, upsampling = True, 
             os.makedirs(output_dir)
         
         srp_feature_maps = {}
-        for feature_map_name in tqdm(feature_maps, desc = 'SRP Extraction (Layer)'):
+        for feature_map_name in tqdm(list(feature_maps), desc = 'SRP Extraction (Layer)'):
             output_filepath = output_filepaths[feature_map_name]
             if not os.path.exists(output_filepath):
                 srp_feature_maps[feature_map_name] = get_srps(feature_maps[feature_map_name])
