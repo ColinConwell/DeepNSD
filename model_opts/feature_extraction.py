@@ -2,7 +2,7 @@ import os, sys, shutil
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from warnings import warn
+from logging import warning
 from tqdm.auto import tqdm as tqdm
 from collections import defaultdict, OrderedDict
 
@@ -192,24 +192,30 @@ def get_feature_maps(model, inputs, layers_to_retain = None, remove_duplicates =
     model = prep_model_for_extraction(model)
     enforce_input_shape = True
     
+    def fix_outputs_shape(inputs, outputs, module_name):
+        if len(outputs.shape) == 0:
+            warning('Output in {} is empty. Skipping...'.format(module_name))
+            return None
+        if enforce_input_shape:
+            if outputs.shape[0] == inputs.shape[0]:
+                return outputs
+            if outputs.shape[0] != inputs.shape[0]:
+                if check_for_input_axis(outputs, inputs.shape[0]):
+                    return reset_input_axis(outputs, inputs.shape[0])
+                if not check_for_input_axis(outputs, inputs.shape[0]):
+                    warning('Ambiguous input axis in {}. Skipping...'.format(module_name))
+                    return None
+        if not enforce_input_shape:
+            return outputs
+    
     def register_hook(module):
         def hook(module, input, output):
             def process_output(output, module_name):
                 if layers_to_retain is None or module_name in layers_to_retain:
                     if isinstance(output, torch.Tensor):
                         outputs = output.cpu().detach().type(torch.FloatTensor)
-                        if enforce_input_shape:
-                            if outputs.shape[0] == inputs.shape[0]:
-                                feature_maps[module_name] = outputs
-                            if outputs.shape[0] != inputs.shape[0]:
-                                if check_for_input_axis(outputs, inputs.shape[0]):
-                                    outputs = reset_input_axis(outputs, inputs.shape[0])
-                                    feature_maps[module_name] = outputs
-                                if not check_for_input_axis(outputs, inputs.shape[0]):
-                                    feature_maps[module_name] = None
-                                    warn('Ambiguous input axis in {}. Skipping...'.format(module_name))
-                        if not enforce_input_shape:
-                            feature_maps[module_name] = outputs
+                        outputs = fix_outputs_shape(inputs, outputs, module_name)
+                        feature_maps[module_name] = outputs
                 if layers_to_retain is not None and module_name not in layers_to_retain:
                     feature_maps[module_name] = None
                             
@@ -250,8 +256,11 @@ def get_feature_maps(model, inputs, layers_to_retain = None, remove_duplicates =
 
 def get_empty_feature_maps(model, inputs = None, input_size=(3,224,224), dataset_size=3,
         layers_to_retain = None, remove_duplicates = True, names_only=False):
-
     
+    check_model(model)
+    if isinstance(model, str):
+        model = get_prepped_model(model)
+
     if inputs is not None:
         inputs = get_inputs_sample(inputs)
         
@@ -358,7 +367,7 @@ def get_feature_map_metadata(model, input_size=(3,224,224), remove_duplicates = 
                                 map_data[module_name] = outputs
                             if not check_for_input_axis(outputs, inputs.shape[0]):
                                 feature_maps[module_name] = None
-                                warn('Ambiguous input axis in {}. Skipping...'.format(module_name))
+                                warning('Ambiguous input axis in {}. Skipping...'.format(module_name))
 
                 if module_name in map_data:
                     module_name = get_module_name(module, metadata)
