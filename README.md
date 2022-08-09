@@ -18,10 +18,11 @@
  A [manuscript](https://openreview.net/pdf?id=i_xiyGq6FNT) that details results obtained using this pipeline may be found at the reference below.
  
  ```bibtex
- @inproceedings{conwell2021can,
-  title={What can 5.17 billion regression fits tell us about artificial models of the human visual system?},
-  author={Conwell, Colin and Prince, Jacob S and Alvarez, George A and Konkle, Talia},
-  booktitle={SVRHM 2021 Workshop@ NeurIPS},
-  year={2021}
+@article{conwell2022large,
+  title={Large-Scale Benchmarking of Diverse Artificial Vision Models in Prediction of 7T Human Neuroimaging Data},
+  author={Conwell, Colin and Prince, Jacob S and Alvarez, George and Konkle, Talia},
+  journal={bioRxiv},
+  year={2022},
+  publisher={Cold Spring Harbor Laboratory}
 }
 ```
