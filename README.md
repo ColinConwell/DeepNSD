@@ -15,7 +15,7 @@
 - the [Detectron2](https://github.com/facebookresearch/detectron2) model zoo
 - ISL's [MiDas](https://github.com/isl-org/MiDaS) models, FaceBook's [DINO](https://github.com/facebookresearch/dino) models...
  
- A [manuscript](https://openreview.net/pdf?id=i_xiyGq6FNT) that details results obtained using this pipeline may be found at the reference below.
+ A [manuscript](https://www.biorxiv.org/content/10.1101/2022.03.28.485868v1.abstract) that details results obtained using this pipeline may be found at the reference below.
  
  ```bibtex
 @article{conwell2022large,
