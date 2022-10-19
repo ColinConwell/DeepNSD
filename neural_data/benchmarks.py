@@ -85,18 +85,18 @@ class NaturalScenesDataset(NeuralDataset):
         
         response_path = os.path.join(data_dir, 'response_data.parquet')
         metadata_path = os.path.join(data_dir, 'metadata.csv')
-        image_key_path = os.path.join(data_dir, 'image_key.csv')
+        stimdata_path = os.path.join(data_dir, 'stimulus_data.csv')
         self.image_root = os.path.join(data_dir, 'stimulus_set')
         
-        path_set = [response_path, metadata_path, image_key_path]
+        path_set = [response_path, metadata_path, stimdata_path]
         if not all([os.path.exists(path) for path in path_set]):
             print('Downloading data from Google Drive to {}'.format(data_dir))
             tar_file = '{}/natural_scenes_demo.tar.bz2'.format(path_dir)
-            gdown.download('https://drive.google.com/uc?export=download&id=16Qkj5g9uUUHiyRayJ_fCLR_nLpKO6S4i',
+            gdown.download('https://drive.google.com/uc?export=download&id=176Vygj8SMic_p9tZtgqw60GtSA50D_VG',
                            quiet = False, output = tar_file)
             extract_tar(tar_file, path_dir)
             
-        self.stimulus_data = pd.read_csv(image_key_path)
+        self.stimulus_data = pd.read_csv(stimdata_path)
         self.n_stimuli = len(self.stimulus_data)
         
         self.response_data = pd.read_parquet(response_path).set_index('voxel_id')
@@ -108,7 +108,7 @@ class NaturalScenesDataset(NeuralDataset):
             self.response_data = self.response_data.loc[subset_idx,:]
             self.metadata = self.metadata.loc[subset_idx,:]
             
-        self.stimulus_data = self.stimulus_data.set_index('key').loc[self.response_data.columns].reset_index()
+        self.stimulus_data = self.stimulus_data.set_index('image_id').loc[self.response_data.columns].reset_index()
         self.stimulus_data['image_path'] = self.image_root + '/' + self.stimulus_data.image_name
         
         self.rdms = self.get_rdms(['roi_name', 'subj_id'])
