@@ -2,7 +2,7 @@
  
  This repository contains some early code for the ongoing DeepNSD project, an attempt to characterize the representational structure of human visual cortex with the massive [NSD](http://naturalscenesdataset.org/) fMRI dataset and a bountiful cornucopia of deep neural network models.
  
- Our Google Colab tutorial ([bit.ly/Deep-NSD-Tutorial](https://bit.ly/Deep-NSD-Tutorial)) provides a step by step demonstration of the main functions in this pipeline, fitting the representations of a [CLIP](https://github.com/openai/CLIP) model to a subset of the fMRI data.
+ Our Google Colab tutorial ([bit.ly/Deep-NSD-Tutorial](https://bit.ly/Deep-NSD-Tutorial)) provides a step by step demonstration of the main functions in this pipeline, fitting the representations of a [CLIP](https://github.com/openai/CLIP) model to a subset of the fMRI data using the (DeepDive)[https://github.com/ColinConwell/DeepDive] package.
  
  You can use this codebase to quickly load (in a unified API) a number of models and their associated transforms. (Please note that -- pending further development -- you will have to install the underlying packages manually.) 
  
