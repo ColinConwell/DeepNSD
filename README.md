@@ -1,6 +1,6 @@
 # DeepNSD
  
- This repository contains some early code for the ongoing DeepNSD project, an attempt to characterize the representational structure of human visual cortex with the massive [NSD](http://naturalscenesdataset.org/) fMRI dataset and a bountiful cornucopia of deep neural network models.
+ This repository contains code for the ongoing DeepNSD project, an attempt to characterize the representational structure of human visual cortex with the massive [NSD](http://naturalscenesdataset.org/) fMRI dataset and a bountiful cornucopia of deep neural network models.
  
  Our Google Colab tutorial ([bit.ly/Deep-NSD-Tutorial](https://bit.ly/Deep-NSD-Tutorial)) provides a step by step demonstration of the main functions in this pipeline, fitting the representations of a [CLIP](https://github.com/openai/CLIP) model to a subset of the fMRI data using the [DeepDive](https://github.com/ColinConwell/DeepDive) package.
  
@@ -18,10 +18,10 @@
  A [manuscript](https://www.biorxiv.org/content/10.1101/2022.03.28.485868v1.abstract) that details results obtained using this pipeline may be found at the reference below.
  
  ```bibtex
-@article{conwell2022large,
-  title={Large-Scale Benchmarking of Diverse Artificial Vision Models in Prediction of 7T Human Neuroimaging Data},
-  author={Conwell, Colin and Prince, Jacob S and Alvarez, George and Konkle, Talia},
-  journal={bioRxiv},
+@article{conwell2022pressures,
+  title={What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?},
+  author={Conwell, Colin and Prince, Jacob S and Kay, Kendrick N and Alvarez, George A and Konkle, Talia},
+  journal={BioRxiv},
   year={2022},
   publisher={Cold Spring Harbor Laboratory}
 }
