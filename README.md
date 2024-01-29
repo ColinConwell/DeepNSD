@@ -34,4 +34,4 @@
 
 Recently, our team has been working on a new, highly-accelerated version of this codebase called **Deepjuice** -- effectively, a bottom-up reimplementation of all DeepDive functionalities that allows for end-to-end benchmarking (feature extraction, SRP, PCA, CKA, RSA, and regression) without ever removing data from the GPU. 
 
-**DeepJuice** is currently in private beta, but if you're interested in trying out, please feel free to contact me (Colin Conwell) by email: conwell[at]g[dot]harvard[dot]edu)
+**DeepJuice** is currently in private beta, but if you're interested in trying out, please feel free to contact me (Colin Conwell) by email: conwell[at]g[dot]harvard[dot]edu
