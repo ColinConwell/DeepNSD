@@ -1,7 +1,7 @@
 if (!require(pacman)) {install.packages("pacman")}
 pacman::p_load('this.path','arrow','magrittr','glue', 'scales', 'aqm',
                'lme4', 'MASS', 'segmented', 'umap', 'Rtsne', 'rstatix',
-               'xtable','janitor','officer', 'gt', 'lemon', 'ggplot2',
+               'xtable','janitor','officer', 'gt', 'lemon', 'sjPlot',
                'colorspace', 'ggeasy', 'ggforce', 'ggh4x', 'ggpubr',
                'ggstance', 'ggrepel','ggstatsplot', 'ggtext', 'tidytext',
                'rsample','broom','broom.mixed','modelsummary','tidyverse')
@@ -500,6 +500,8 @@ zoom_plots[[1]] <- last_plot()
 # ggsave('saved_figures/architecture.jpg',
 #        width = 10, height = 6.5, units = 'in')
 
+# write.csv(temp_data, 'figure_data/Figure2.csv', row.names=FALSE)
+
 # ··············································································
 ###* Figure: Task ------------------------------------------------------------
 
@@ -607,6 +609,8 @@ zoom_plots[[2]] <- last_plot()
 # ggsave('saved_figures/task.jpg',
 #        width = 10, height = 6.25, units = 'in')
 
+# write.csv(temp_data, 'figure_data/Figure3.csv', row.names=FALSE)
+
 # ··············································································
 ###* Figure: Diet -------------------------------------------------------------
 
@@ -636,12 +640,13 @@ temp_data <- results$max %>% filter(region == 'OTC') %>%
                mutate(rank = dense_rank(score)) %>% ungroup %>%
                select(display_name, rank))}
 
-temp_data %>% group_by(metric) %>%
+plot_data <- temp_data %>% group_by(metric) %>%
   mutate(grand_mean = mean(score)) %>%
   group_by(metric, subj_id) %>%
   mutate(subj_mean = mean(score),
-         score = score - subj_mean + grand_mean) %>%
-  ggplot(aes(x = rank, y = score, color = contrast)) +
+         score = score - subj_mean + grand_mean)
+
+ggplot(plot_data, aes(x = rank, y = score, color = contrast)) +
   stat_summary(aes(fill = contrast, alpha = metric), 
                position = position_dodge(width = 0.9),
                fun.data = mean_cl_boot, geom = 'crossbar',
@@ -689,6 +694,8 @@ temp_data %>% group_by(metric) %>%
         panel.grid.minor = element_blank(),
         panel.grid.major = element_blank()) -> plot_list[[1]]
 
+# write.csv(plot_data, 'figure_data/Figure4A.csv', row.names=FALSE)
+
 temp_data <- results$max %>% filter(region == 'OTC') %>%
   filter(metric %in% c('crsa','wrsa')) %>%
   filter(!is.na(compare_diet_ipcl)) %>%
@@ -702,12 +709,13 @@ temp_data <- results$max %>% filter(region == 'OTC') %>%
                select(contrast, rank))} %>%
   mutate(display_name = str_replace(display_name, 'AlexNet-GN-IPCL',''))
 
-temp_data %>% group_by(metric) %>%
+plot_data <- temp_data %>% group_by(metric) %>%
   mutate(grand_mean = mean(score)) %>%
   group_by(metric, subj_id) %>%
   mutate(subj_mean = mean(score),
-         score = score - subj_mean + grand_mean) %>%
-  ggplot(aes(x = rank, y = score, color = contrast)) +
+         score = score - subj_mean + grand_mean)
+
+ggplot(plot_data, aes(x = rank, y = score, color = contrast)) +
   geom_hline(aes(yintercept = 0.7975), data = noise_ceilings$group_avg, 
              linetype = 1, size = 2, color = 'gray') +
   stat_summary(aes(fill = contrast, alpha = metric), 
@@ -741,6 +749,8 @@ temp_data %>% group_by(metric) %>%
         strip.text = element_blank(),
         panel.grid.minor = element_blank(),
         panel.grid.major = element_blank()) -> plot_list[[2]]
+
+# write.csv(plot_data, 'figure_data/Figure4B.csv', row.names=FALSE)
 
 cowplot::plot_grid(plot_list[[1]] + theme(plot.margin = margin(1, 1, 2, 1, unit = 'cm')), 
                    plot_list[[2]] + #easy_remove_y_axis(teach=TRUE) + 
@@ -1070,7 +1080,7 @@ temp_data <- results$summary %>% select(-rank) %>%
               mutate(rank = dense_rank(-score)) %>% select(-metric, -score))
 
 target_levels <- c('ImageNet+','OpenImages', 'Places256', 'VGGFace2','Taskonomy','Untrained')
-temp_data %>% filter(metric %in% c('crsa','wrsa')) %>%
+plot_data <- temp_data %>% filter(metric %in% c('crsa','wrsa')) %>%
   mutate(metric = str_to_upper(metric),
          metric = factor(metric, levels = c('CRSA','WRSA'))) %>%
   mutate(display_name = str_replace(display_name, 'CLiP-ResNet50','ResNet50-CLIP'),
@@ -1083,8 +1093,11 @@ temp_data %>% filter(metric %in% c('crsa','wrsa')) %>%
          training = ifelse(str_detect(model_string, 'taskonomy'), 'Taskonomy', training)) %>%
   ungroup() %>% distinct(model_string, display_name, metric, score, rank, training) %>%
   mutate(metric = factor(metric, levels = c('WRSA', 'CRSA')),
-         training = factor(training, levels = target_levels)) %>%
-  ggplot(aes(x = rank, y = score, color = training, 
+         training = factor(training, levels = target_levels))
+
+# write.csv(plot_data, 'figure_data/Figure5A.csv', row.names=FALSE)
+
+ggplot(plot_data, aes(x = rank, y = score, color = training, 
              shape = metric, linetype = metric)) + 
   theme_classic() + geom_point(cex = 3, alpha = 0.5, stroke = 1) + 
   geom_label_repel(aes(label = display_name), show.legend = FALSE,
@@ -1125,7 +1138,7 @@ manifold_stats <- read_csv('source_data/model_statistics/dimensionality.csv') %>
   filter(!str_detect(model_string, 'NPID')) %>%
   mutate(trained = ifelse(str_detect(model_string, '_random'), 'No', 'Yes'))
 
-results$summary %>% select(model_string, metric, score) %>%
+plot_data <- results$summary %>% select(model_string, metric, score) %>%
   left_join(manifold_stats, multiple = 'all',
             relationship = 'many-to-many') %>%
   filter(metric %in% c('crsa','wrsa'), random_projection) %>%
@@ -1138,8 +1151,11 @@ results$summary %>% select(model_string, metric, score) %>%
          training = ifelse(str_detect(model_string, 'taskonomy'), 'Taskonomy', training)) %>%
   mutate(metric = factor(metric, levels = c('WRSA', 'CRSA')),
          training = factor(training, levels = target_levels)) %>%
-  ungroup() %>% distinct(model_string, metric, score, effective_dimensions, training) %>%
-  ggplot(aes(x = effective_dimensions, y = score, color = training,
+  ungroup() %>% distinct(model_string, metric, score, effective_dimensions, training)
+
+# write.csv(plot_data, 'figure_data/Figure5B.csv', row.names=FALSE)
+
+ggplot(plot_data, aes(x = effective_dimensions, y = score, color = training,
              shape = metric, linetype = metric)) + theme_minimal() +
   facet_wrap2(~metric, axes = 'all', remove_labels = 'none', nrow = 2) + 
   guides(alpha = 'none') + guides(shape = 'none') +
@@ -1182,14 +1198,17 @@ results$summary %>% select(model_string, metric, score) %>%
 imagenet_scores <- read_csv('source_data/model_statistics/imagenet1k.csv') %>%
   rename(imagenet_accuracy = imagnet1k_top1)
 
-results$summary %>% select(model_string, metric, score) %>%
+plot_data <- results$summary %>% select(model_string, metric, score) %>%
   left_join(imagenet_scores, multiple = 'all') %>%
   drop_na(imagenet_accuracy) %>%
   filter(metric %in% c('crsa','wrsa')) %>%
   mutate(metric = str_to_upper(metric),
          metric = factor(metric, levels = c('WRSA','CRSA'))) %>%
-  ungroup() %>% distinct(model_string, metric, score, imagenet_accuracy) %>%
-  ggplot(aes(x = imagenet_accuracy, y = score,
+  ungroup() %>% distinct(model_string, metric, score, imagenet_accuracy)
+
+# write.csv(plot_data, 'figure_data/Figure5C.csv', row.names=FALSE)
+
+ggplot(plot_data, aes(x = imagenet_accuracy, y = score,
              shape = metric, linetype = metric)) + theme_minimal() +
   facet_wrap2(~metric, axes = 'all', remove_labels = 'none', nrow = 2) + 
   guides(alpha = 'none') + guides(shape = 'none') +
@@ -1301,32 +1320,13 @@ model_uber_mds <- c('crsa'='crsa','wrsa'='wrsa') %>%
 
 plot_list <- list()
 
-model_uber_rsa <- read_csv('source_data/model_uber_rsa.csv') %>%
-  rename(model1 = var1, model2 = var2) %>%
-  filter_all(all_vars(!str_detect(., 'NPID')))
-
-model_uber_rsm <- read_parquet('source_data/model_uber_rsm.parquet') %>% 
-  column_to_rownames('__index_level_0__') %>%
-  select(-contains(c('NPID','_random'))) %>%
-  rownames_to_column('row') %>%
-  filter(!str_detect(row, 'NPID|_random')) %>%
-  column_to_rownames('row')
-
-model_uber_cors <- model_uber_rsm %>% pull_lower_triangle() %>% 
-  cor_gather() %>%
-  purrr::set_names('row', 'var1', 'var2', 'cor') %>%
-  mutate(cor = as.numeric(cor)) %>%
-  filter(var1 != var2) %>% select(-row) %>%
-  mutate(metric_1 = ifelse(str_detect(var1, 'crsa'), 'crsa', 'wrsa'),
-         metric_2 = ifelse(str_detect(var2, 'crsa'), 'crsa', 'wrsa'),
-         model_string_1 = str_replace(var1, 'crsa_|wrsa_', ''),
-         model_string_2 = str_replace(var2, 'crsa_|wrsa_', '')) %>%
-  select(model_string_1, metric_1, model_string_2, metric_2, cor)
-
-model_uber_rsa %>% 
+plot_data <- model_uber_rsa %>% 
   filter(model1 %in% model_sets$upper, 
-         model2 %in% model_sets$upper) %>%
-  ggplot(aes(x = correlation)) + theme_classic() +
+         model2 %in% model_sets$upper)
+
+# write.csv(plot_data, 'figure_data/Figure6A.csv', row.names=FALSE)
+
+ggplot(plot_data, aes(x = correlation)) + theme_classic() +
   facet_wrap(~ metric, nrow = 2) + #easy_remove_y_axis() +
   geom_histogram(aes(y = ..density..), fill = 'gray', color = 'black',
                  position='identity', binwidth = 0.05) +
@@ -1368,7 +1368,7 @@ group_levels <- c('Convolutional','Transformer','Taskonomy','NC-SSL','C-SSL',
                   'SimCLR','CLIP','SLIP','ImageNet1K','ImageNet21K',
                   'Objects(1)','Objects','Places','Faces')
 
-model_uber_mds %>% names() %>%
+plot_data <- model_uber_mds %>% names() %>%
   lapply(function(x) {
     bind_rows(
       model_uber_mds[[x]] %>%
@@ -1408,8 +1408,11 @@ model_uber_mds %>% names() %>%
       mutate(group = factor(group, levels = group_levels)) %>%
       mutate(experiment = factor(experiment, levels = c('Architecture','Task','Input'))) %>%
       mutate(focus = ifelse(is.na(group), 'Out-of-Focus','In-Focus'))
-  }) %>% bind_rows() %>%
-  ggplot(aes(x = V1, y = V2, fill = group, color = group, alpha = focus)) +
+  }) %>% bind_rows()
+  
+# write.csv(plot_data, 'figure_data/Figure6B.csv', row.names=FALSE)
+
+ggplot(plot_data, aes(x = V1, y = V2, fill = group, color = group, alpha = focus)) +
   facet_grid(metric~experiment) + geom_point(cex = 3, shape = 21) + theme_classic() +
   scale_fill_manual(values = palette) + 
   scale_color_manual(values = palette) + 
@@ -1462,7 +1465,47 @@ figure_dims <- list(width_inches = 8.5,
 #        width = figure_dims$width_inches, 
 #        height = figure_dims$height_inches / figure_dims$aspect_ratio)
 
-## Supplementary ---------------------------------------------------------------
+# ··············································································
+## Python-Generated ------------------------------------------------------------
+
+temp_data <- read_csv('source_data/voxel_metadata_OTC.csv') %>%
+  select('voxel_id', 'ncsnr', 'subj_id') %>%
+  mutate(coordinate = str_split(voxel_id, '-', simplify = TRUE)[,2:4],
+         x = as.numeric(coordinate[,1]),
+         y = as.numeric(coordinate[,2]),
+         z = as.numeric(coordinate[,3])) %>% select(-coordinate)
+
+# write.csv(temp_data, 'figure_data/Figure1A.csv', row.names=FALSE)
+
+temp_data <- read_csv('source_data/activation_pcspace.csv') %>%
+  mutate(StimIndex = rownames(.), .after=Activity)
+
+temp_data %>% mutate(index = rownames(.)) %>%
+  ggplot(aes(x = X, y = Y)) + theme_bw() +
+  facet_wrap(~Activity, scales='free') + 
+  geom_point(aes(color = StimIndex), show.legend=FALSE) 
+
+# write.csv(temp_data, 'figure_data/Figure1C.csv', row.names=FALSE)
+
+## Stitch Source Data ----------------------------------------------------------
+
+pacman::p_load('readr', 'writexl')
+folder_path <- "figure_data"
+
+# Get all csv files in target folder
+file_paths <- list.files(folder_path, pattern = "\\.csv$", full.names = TRUE)
+
+temp_data <- list()
+
+for (file_path in file_paths) {
+  key <- tools::file_path_sans_ext(basename(file_path))
+  temp_data[[key]] <- read_csv(file_path)
+}
+
+# Write to excel file, each csv as separate sheet
+write_xlsx(temp_data, path = "source_data/source_data.xlsx")
+
+## Supplementary Data ----------------------------------------------------------
 
 ### ············································································
 ###* Table: All Models ---------------------------------------------------------
