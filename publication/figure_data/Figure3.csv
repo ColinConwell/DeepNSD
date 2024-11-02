@@ -1,0 +1,361 @@
+"model","display_name","train_task","contrast","subj_id","metric","score","rank"
+"autoencoding","Autoencoder","taskonomy","Taskonomy","1","crsa",0.0798085703981504,1
+"autoencoding","Autoencoder","taskonomy","Taskonomy","2","crsa",0.0618345764475788,1
+"autoencoding","Autoencoder","taskonomy","Taskonomy","5","crsa",0.0783240559021164,1
+"autoencoding","Autoencoder","taskonomy","Taskonomy","7","crsa",0.0867506543126553,1
+"class_object","Object Classification","taskonomy","Taskonomy","1","crsa",0.17247986280937,25
+"class_object","Object Classification","taskonomy","Taskonomy","2","crsa",0.19608759690345,25
+"class_object","Object Classification","taskonomy","Taskonomy","5","crsa",0.202066253257215,25
+"class_object","Object Classification","taskonomy","Taskonomy","7","crsa",0.186322929057005,25
+"class_scene","Scene Classification","taskonomy","Taskonomy","1","crsa",0.141849096991062,24
+"class_scene","Scene Classification","taskonomy","Taskonomy","2","crsa",0.143195626397001,24
+"class_scene","Scene Classification","taskonomy","Taskonomy","5","crsa",0.157794842433345,24
+"class_scene","Scene Classification","taskonomy","Taskonomy","7","crsa",0.143375069665877,24
+"curvature","Curvatures","taskonomy","Taskonomy","5","crsa",0.130152478621806,16
+"curvature","Curvatures","taskonomy","Taskonomy","7","crsa",0.130300537849433,16
+"curvature","Curvatures","taskonomy","Taskonomy","1","crsa",0.128710082007411,16
+"curvature","Curvatures","taskonomy","Taskonomy","2","crsa",0.13849225400296,16
+"denoising","Denoising","taskonomy","Taskonomy","1","crsa",0.0644323263282379,4
+"denoising","Denoising","taskonomy","Taskonomy","2","crsa",0.0547475968291475,4
+"denoising","Denoising","taskonomy","Taskonomy","5","crsa",0.067399772504334,4
+"denoising","Denoising","taskonomy","Taskonomy","7","crsa",0.0592623827242431,4
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","1","crsa",0.164880585417773,22
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","2","crsa",0.172254839008399,22
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","5","crsa",0.180179725507269,22
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","7","crsa",0.175978288527107,22
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","1","crsa",0.127058499749042,18
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","5","crsa",0.134381967807397,18
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","7","crsa",0.126941700784067,18
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","2","crsa",0.138798032641742,18
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","2","crsa",0.160108624822571,20
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","5","crsa",0.170998404990858,20
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","7","crsa",0.15493657492493,20
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","1","crsa",0.161010562499583,20
+"edge_texture","Texture Edges","taskonomy","Taskonomy","1","crsa",0.0687411305627702,7
+"edge_texture","Texture Edges","taskonomy","Taskonomy","5","crsa",0.0509887925062109,7
+"edge_texture","Texture Edges","taskonomy","Taskonomy","7","crsa",0.0703297984816995,7
+"edge_texture","Texture Edges","taskonomy","Taskonomy","2","crsa",0.0630238579431022,7
+"egomotion","Egomotion","taskonomy","Taskonomy","2","crsa",0.0789495998312948,11
+"egomotion","Egomotion","taskonomy","Taskonomy","5","crsa",0.0912730995596825,11
+"egomotion","Egomotion","taskonomy","Taskonomy","1","crsa",0.0889559488497313,11
+"egomotion","Egomotion","taskonomy","Taskonomy","7","crsa",0.0903574898120972,11
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","1","crsa",0.106456806497491,13
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","2","crsa",0.0884818680848499,13
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","5","crsa",0.103123074170248,13
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","7","crsa",0.0976431825333365,13
+"inpainting","Inpainting","taskonomy","Taskonomy","1","crsa",0.0979347529283009,10
+"inpainting","Inpainting","taskonomy","Taskonomy","2","crsa",0.0822014170570012,10
+"inpainting","Inpainting","taskonomy","Taskonomy","5","crsa",0.100368530430718,10
+"inpainting","Inpainting","taskonomy","Taskonomy","7","crsa",0.0995606344408804,10
+"jigsaw","Jigsaw","taskonomy","Taskonomy","1","crsa",0.0525289474831485,6
+"jigsaw","Jigsaw","taskonomy","Taskonomy","2","crsa",0.0705750187786288,6
+"jigsaw","Jigsaw","taskonomy","Taskonomy","5","crsa",0.0685001069644164,6
+"jigsaw","Jigsaw","taskonomy","Taskonomy","7","crsa",0.0565234497353443,6
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","2","crsa",0.0577428847468134,2
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","5","crsa",0.0634806136116673,2
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","7","crsa",0.0559579350660625,2
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","1","crsa",0.0613313184966844,2
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","1","crsa",0.166121074784289,23
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","2","crsa",0.164164369219729,23
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","5","crsa",0.160468228836283,23
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","7","crsa",0.168731392554381,23
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","2","crsa",0.082047805936911,5
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","5","crsa",0.0992348425429717,5
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","7","crsa",0.0949340796623943,5
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","1","crsa",0.103719612628577,5
+"normal","Surface Normals","taskonomy","Taskonomy","1","crsa",0.150390532951453,19
+"normal","Surface Normals","taskonomy","Taskonomy","2","crsa",0.152793627711587,19
+"normal","Surface Normals","taskonomy","Taskonomy","5","crsa",0.156514860412413,19
+"normal","Surface Normals","taskonomy","Taskonomy","7","crsa",0.154591211966798,19
+"point_matching","Point Matching","taskonomy","Taskonomy","1","crsa",0.0876104660453296,12
+"point_matching","Point Matching","taskonomy","Taskonomy","7","crsa",0.0948775603476464,12
+"point_matching","Point Matching","taskonomy","Taskonomy","2","crsa",0.0875535222331585,12
+"point_matching","Point Matching","taskonomy","Taskonomy","5","crsa",0.103705598839053,12
+"random_weights","Random Weights","taskonomy","Taskonomy","1","crsa",0.0396485296916399,3
+"random_weights","Random Weights","taskonomy","Taskonomy","2","crsa",0.0357418683333609,3
+"random_weights","Random Weights","taskonomy","Taskonomy","5","crsa",0.0387657931644997,3
+"random_weights","Random Weights","taskonomy","Taskonomy","7","crsa",0.0325173056563744,3
+"reshading","Reshading","taskonomy","Taskonomy","1","crsa",0.15827469366988,21
+"reshading","Reshading","taskonomy","Taskonomy","2","crsa",0.158158397453388,21
+"reshading","Reshading","taskonomy","Taskonomy","5","crsa",0.170656649066342,21
+"reshading","Reshading","taskonomy","Taskonomy","7","crsa",0.157119360635913,21
+"room_layout","Room Layout","taskonomy","Taskonomy","1","crsa",0.132679559865659,14
+"room_layout","Room Layout","taskonomy","Taskonomy","5","crsa",0.147830302883474,14
+"room_layout","Room Layout","taskonomy","Taskonomy","7","crsa",0.132060806917903,14
+"room_layout","Room Layout","taskonomy","Taskonomy","2","crsa",0.135719010852397,14
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","1","crsa",0.144205207906607,17
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","2","crsa",0.143989142911859,17
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","5","crsa",0.144180317678145,17
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","7","crsa",0.144749836706988,17
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","1","crsa",0.163466844512209,15
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","2","crsa",0.16525509456274,15
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","5","crsa",0.181975662393425,15
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","7","crsa",0.173590012832304,15
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","1","crsa",0.0871762964417026,8
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","2","crsa",0.0782931601179139,8
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","5","crsa",0.0689270820318981,8
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","7","crsa",0.0891756362263992,8
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","2","crsa",0.0909393562535111,9
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","1","crsa",0.0734088629412944,9
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","5","crsa",0.0962479603499223,9
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","7","crsa",0.0901188879646751,9
+"autoencoding","Autoencoder","taskonomy","Taskonomy","1","wrsa",0.0971951261645972,1
+"autoencoding","Autoencoder","taskonomy","Taskonomy","2","wrsa",0.0938441388232237,1
+"autoencoding","Autoencoder","taskonomy","Taskonomy","5","wrsa",0.109959424184285,1
+"autoencoding","Autoencoder","taskonomy","Taskonomy","7","wrsa",0.111219371016309,1
+"class_object","Object Classification","taskonomy","Taskonomy","1","wrsa",0.435041300688283,25
+"class_object","Object Classification","taskonomy","Taskonomy","2","wrsa",0.433769793065362,25
+"class_object","Object Classification","taskonomy","Taskonomy","7","wrsa",0.413122567665065,25
+"class_object","Object Classification","taskonomy","Taskonomy","5","wrsa",0.460926709585022,25
+"class_scene","Scene Classification","taskonomy","Taskonomy","1","wrsa",0.407356710607295,24
+"class_scene","Scene Classification","taskonomy","Taskonomy","7","wrsa",0.407620953282288,24
+"class_scene","Scene Classification","taskonomy","Taskonomy","2","wrsa",0.431426725080124,24
+"class_scene","Scene Classification","taskonomy","Taskonomy","5","wrsa",0.455609734167981,24
+"curvature","Curvatures","taskonomy","Taskonomy","5","wrsa",0.330125341074457,16
+"curvature","Curvatures","taskonomy","Taskonomy","1","wrsa",0.304539671531981,16
+"curvature","Curvatures","taskonomy","Taskonomy","7","wrsa",0.301600089106587,16
+"curvature","Curvatures","taskonomy","Taskonomy","2","wrsa",0.344305535887458,16
+"denoising","Denoising","taskonomy","Taskonomy","1","wrsa",0.151071472720517,4
+"denoising","Denoising","taskonomy","Taskonomy","2","wrsa",0.143443209302472,4
+"denoising","Denoising","taskonomy","Taskonomy","5","wrsa",0.149689924333331,4
+"denoising","Denoising","taskonomy","Taskonomy","7","wrsa",0.125631551325738,4
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","1","wrsa",0.353566834263527,22
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","2","wrsa",0.37602200965992,22
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","5","wrsa",0.39171263583075,22
+"depth_euclidean","Euclidean Depth","taskonomy","Taskonomy","7","wrsa",0.322965349135192,22
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","1","wrsa",0.326125202427477,18
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","2","wrsa",0.354085476567718,18
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","5","wrsa",0.339954599508612,18
+"depth_zbuffer","Z-Buffer Depth","taskonomy","Taskonomy","7","wrsa",0.303387790436586,18
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","7","wrsa",0.306325292777516,20
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","1","wrsa",0.307362667791115,20
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","2","wrsa",0.376854001412435,20
+"edge_occlusion","Occlusion Edges","taskonomy","Taskonomy","5","wrsa",0.399827821512142,20
+"edge_texture","Texture Edges","taskonomy","Taskonomy","1","wrsa",0.139771260132207,7
+"edge_texture","Texture Edges","taskonomy","Taskonomy","2","wrsa",0.188523615858216,7
+"edge_texture","Texture Edges","taskonomy","Taskonomy","5","wrsa",0.169339004437958,7
+"edge_texture","Texture Edges","taskonomy","Taskonomy","7","wrsa",0.166508841691622,7
+"egomotion","Egomotion","taskonomy","Taskonomy","2","wrsa",0.210174619911611,11
+"egomotion","Egomotion","taskonomy","Taskonomy","1","wrsa",0.185138565289169,11
+"egomotion","Egomotion","taskonomy","Taskonomy","5","wrsa",0.214375423181341,11
+"egomotion","Egomotion","taskonomy","Taskonomy","7","wrsa",0.180254900435914,11
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","2","wrsa",0.238056169516559,13
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","1","wrsa",0.248123717163377,13
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","5","wrsa",0.251132020158742,13
+"fixated_pose","Camera Pose (Fixated)","taskonomy","Taskonomy","7","wrsa",0.206398960559713,13
+"inpainting","Inpainting","taskonomy","Taskonomy","1","wrsa",0.190926779893236,10
+"inpainting","Inpainting","taskonomy","Taskonomy","7","wrsa",0.156671896754172,10
+"inpainting","Inpainting","taskonomy","Taskonomy","5","wrsa",0.188275210831235,10
+"inpainting","Inpainting","taskonomy","Taskonomy","2","wrsa",0.244824573445901,10
+"jigsaw","Jigsaw","taskonomy","Taskonomy","2","wrsa",0.162490696637355,6
+"jigsaw","Jigsaw","taskonomy","Taskonomy","7","wrsa",0.122174099675321,6
+"jigsaw","Jigsaw","taskonomy","Taskonomy","1","wrsa",0.153418107378785,6
+"jigsaw","Jigsaw","taskonomy","Taskonomy","5","wrsa",0.18232969677104,6
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","1","wrsa",0.111750606986985,2
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","2","wrsa",0.132818361404943,2
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","5","wrsa",0.131674017034876,2
+"keypoints2d","2D Keypoints","taskonomy","Taskonomy","7","wrsa",0.09579125026983,2
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","2","wrsa",0.360921577609752,23
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","5","wrsa",0.388812949235209,23
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","7","wrsa",0.327413831925552,23
+"keypoints3d","3D Keypoints","taskonomy","Taskonomy","1","wrsa",0.369584103652004,23
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","7","wrsa",0.158432682922284,5
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","1","wrsa",0.155282777471351,5
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","2","wrsa",0.149865442248941,5
+"nonfixated_pose","Camera Pose (Nonfixated)","taskonomy","Taskonomy","5","wrsa",0.149775484037806,5
+"normal","Surface Normals","taskonomy","Taskonomy","7","wrsa",0.307266205657708,19
+"normal","Surface Normals","taskonomy","Taskonomy","5","wrsa",0.352639209101295,19
+"normal","Surface Normals","taskonomy","Taskonomy","2","wrsa",0.358694036976923,19
+"normal","Surface Normals","taskonomy","Taskonomy","1","wrsa",0.33619260816271,19
+"point_matching","Point Matching","taskonomy","Taskonomy","7","wrsa",0.210422382249359,12
+"point_matching","Point Matching","taskonomy","Taskonomy","1","wrsa",0.221047694357459,12
+"point_matching","Point Matching","taskonomy","Taskonomy","2","wrsa",0.20456571161735,12
+"point_matching","Point Matching","taskonomy","Taskonomy","5","wrsa",0.226075030267035,12
+"random_weights","Random Weights","taskonomy","Taskonomy","5","wrsa",0.123115715129091,3
+"random_weights","Random Weights","taskonomy","Taskonomy","1","wrsa",0.137293557059671,3
+"random_weights","Random Weights","taskonomy","Taskonomy","2","wrsa",0.111770538167491,3
+"random_weights","Random Weights","taskonomy","Taskonomy","7","wrsa",0.126191593679174,3
+"reshading","Reshading","taskonomy","Taskonomy","2","wrsa",0.375664826117985,21
+"reshading","Reshading","taskonomy","Taskonomy","5","wrsa",0.372430894495598,21
+"reshading","Reshading","taskonomy","Taskonomy","7","wrsa",0.341172390206919,21
+"reshading","Reshading","taskonomy","Taskonomy","1","wrsa",0.342144596819332,21
+"room_layout","Room Layout","taskonomy","Taskonomy","1","wrsa",0.292457808430415,14
+"room_layout","Room Layout","taskonomy","Taskonomy","2","wrsa",0.328555662776623,14
+"room_layout","Room Layout","taskonomy","Taskonomy","5","wrsa",0.339145368917323,14
+"room_layout","Room Layout","taskonomy","Taskonomy","7","wrsa",0.274582760287955,14
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","1","wrsa",0.318896984770008,17
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","2","wrsa",0.343920314117275,17
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","7","wrsa",0.294441849474703,17
+"segment_semantic","Semantic Segmentation","taskonomy","Taskonomy","5","wrsa",0.340534345884095,17
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","5","wrsa",0.312555660178129,15
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","1","wrsa",0.319238532720467,15
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","2","wrsa",0.317452791784044,15
+"segment_unsup25d","Unsupervised 2.5D Segmentation","taskonomy","Taskonomy","7","wrsa",0.302860989877813,15
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","7","wrsa",0.185015184949244,8
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","1","wrsa",0.155742767348323,8
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","2","wrsa",0.167005058273221,8
+"segment_unsup2d","Unsupervised 2D Segmentation","taskonomy","Taskonomy","5","wrsa",0.170565654513903,8
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","1","wrsa",0.140210638900475,9
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","5","wrsa",0.186073575517973,9
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","2","wrsa",0.227414849618791,9
+"vanishing_point","Vanishing Point","taskonomy","Taskonomy","7","wrsa",0.180839060581879,9
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","1","crsa",0.359126542255637,3
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","2","crsa",0.384106896295006,3
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","5","crsa",0.378616609542251,3
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","7","crsa",0.346341944617747,3
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","1","crsa",0.326955999595652,4
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","2","crsa",0.330310067317773,4
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","5","crsa",0.337533518658912,4
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","7","crsa",0.31019829374709,4
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","5","crsa",0.327660579135242,5
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","1","crsa",0.32795816755904,5
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","2","crsa",0.343652008489981,5
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","7","crsa",0.319896389290355,5
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","1","crsa",0.257363136357418,1
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","2","crsa",0.260295671544137,1
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","5","crsa",0.257315807255221,1
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","7","crsa",0.252809890790805,1
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","1","crsa",0.271337783741542,3
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","2","crsa",0.274673040114126,3
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","5","crsa",0.260132963633404,3
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","7","crsa",0.260520106076132,3
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","1","crsa",0.267110029087105,1
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","2","crsa",0.266185488218769,1
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","5","crsa",0.275461285327101,1
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","7","crsa",0.253259539030005,1
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","1","crsa",0.345848369049775,2
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","2","crsa",0.361110564161531,2
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","5","crsa",0.373911590304203,2
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","7","crsa",0.338279565088804,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","2","crsa",0.243869397239712,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","5","crsa",0.234970836805007,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","7","crsa",0.233145888913087,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","1","crsa",0.240528760616503,2
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","2","crsa",0.372517631091287,6
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","5","crsa",0.366696195980286,6
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","1","crsa",0.361053328048899,6
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","7","crsa",0.346211602037494,6
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","5","crsa",0.329288730583657,4
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","1","crsa",0.334218641403907,4
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","2","crsa",0.354271066580518,4
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","7","crsa",0.332036686679909,4
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","1","wrsa",0.672072422111017,3
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","2","wrsa",0.690609719140772,3
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","7","wrsa",0.618582352064345,3
+"ResNet50-BarlowTwins-BS2048","BarlowTwins","selfsupervised","Contrastive","5","wrsa",0.735353381487183,3
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","1","wrsa",0.622934829252028,4
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","2","wrsa",0.626662295101041,4
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","7","wrsa",0.57964967043934,4
+"ResNet50-ClusterFit-16K-RotNet","ClusterFit-16K-RotNet","selfsupervised","Non-Contrastive","5","wrsa",0.69188020353654,4
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","1","wrsa",0.682572570740495,5
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","2","wrsa",0.707397973282612,5
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","5","wrsa",0.741963761238569,5
+"ResNet50-DeepClusterV2-2x224+6x96","DeepClusterV2","selfsupervised","Contrastive","7","wrsa",0.627582098396483,5
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","7","wrsa",0.5145577947521,1
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","1","wrsa",0.563703585062325,1
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","2","wrsa",0.574257419154783,1
+"ResNet50-JigSaw-Goyal19","JigSaw-Goyal19","selfsupervised","Non-Contrastive","5","wrsa",0.606653755592837,1
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","1","wrsa",0.568643264061146,3
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","2","wrsa",0.603012646310314,3
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","7","wrsa",0.535564137346169,3
+"ResNet50-JigSaw-P100","JigSaw-P100","selfsupervised","Non-Contrastive","5","wrsa",0.6015271348747,3
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","1","wrsa",0.598127218011987,1
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","2","wrsa",0.620862261844017,1
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","5","wrsa",0.670108755434349,1
+"ResNet50-MoCoV2-BS256","MoCoV2","selfsupervised","Contrastive","7","wrsa",0.551053761190361,1
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","2","wrsa",0.6866588816342,2
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","1","wrsa",0.655836796013585,2
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","5","wrsa",0.739899931442389,2
+"ResNet50-PIRL","PIRL","selfsupervised","Contrastive","7","wrsa",0.606578807229276,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","1","wrsa",0.559212203828197,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","2","wrsa",0.551528191301141,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","7","wrsa",0.522563801870158,2
+"ResNet50-RotNet","RotNet","selfsupervised","Non-Contrastive","5","wrsa",0.654944857703895,2
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","2","wrsa",0.721333311256491,6
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","1","wrsa",0.688471333296127,6
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","5","wrsa",0.764449764204429,6
+"ResNet50-SimCLR","SimCLR","selfsupervised","Contrastive","7","wrsa",0.623638645705572,6
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","1","wrsa",0.66197732181153,4
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","2","wrsa",0.694111279453085,4
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","5","wrsa",0.759858534256455,4
+"ResNet50-SwAV-BS4096-2x224+6x96","SwAV","selfsupervised","Contrastive","7","wrsa",0.618775256295236,4
+"resnet50","Supervised (Reference)","classification","Category-Supervised","1","crsa",0.382745538265719,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","2","crsa",0.391785399369335,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","5","crsa",0.386445295401704,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","7","crsa",0.354549385610477,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","1","wrsa",0.678978083687804,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","2","wrsa",0.701560095682888,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","7","wrsa",0.609728496671414,1
+"resnet50","Supervised (Reference)","classification","Category-Supervised","5","wrsa",0.7313551122318,1
+"ViT-B-CLIP","CLIP-B","slip","CLIP","1","crsa",0.291384343920771,2
+"ViT-B-CLIP","CLIP-B","slip","CLIP","2","crsa",0.298511015459063,2
+"ViT-B-CLIP","CLIP-B","slip","CLIP","5","crsa",0.299746480289214,2
+"ViT-B-CLIP","CLIP-B","slip","CLIP","7","crsa",0.287184876484862,2
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","1","crsa",0.335738627334735,3
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","2","crsa",0.347179574837684,3
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","5","crsa",0.349513371720694,3
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","7","crsa",0.332259637217412,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","1","crsa",0.322783441673668,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","2","crsa",0.334350804184976,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","5","crsa",0.358549427009811,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","7","crsa",0.3226971229537,3
+"ViT-L-CLIP","CLIP-L","slip","CLIP","1","crsa",0.283131899337244,1
+"ViT-L-CLIP","CLIP-L","slip","CLIP","2","crsa",0.285877477824227,1
+"ViT-L-CLIP","CLIP-L","slip","CLIP","5","crsa",0.288404266318546,1
+"ViT-L-CLIP","CLIP-L","slip","CLIP","7","crsa",0.279871420658223,1
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","1","crsa",0.316870296452528,2
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","2","crsa",0.333008116406582,2
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","5","crsa",0.337465616435471,2
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","7","crsa",0.321265486315853,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","1","crsa",0.31021809605351,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","2","crsa",0.319326731496709,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","5","crsa",0.322030572414127,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","7","crsa",0.310113214582143,2
+"ViT-S-CLIP","CLIP-S","slip","CLIP","1","crsa",0.264148965613328,3
+"ViT-S-CLIP","CLIP-S","slip","CLIP","7","crsa",0.262069794670905,3
+"ViT-S-CLIP","CLIP-S","slip","CLIP","2","crsa",0.31706696852195,3
+"ViT-S-CLIP","CLIP-S","slip","CLIP","5","crsa",0.33008334200025,3
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","1","crsa",0.329260184430124,1
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","2","crsa",0.347177211560416,1
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","5","crsa",0.35129304274306,1
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","7","crsa",0.330083441919341,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","1","crsa",0.310980510113406,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","2","crsa",0.336759954459191,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","7","crsa",0.320591344497508,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","5","crsa",0.357022349614169,1
+"ViT-B-CLIP","CLIP-B","slip","CLIP","1","wrsa",0.645504104475299,2
+"ViT-B-CLIP","CLIP-B","slip","CLIP","2","wrsa",0.672744534942229,2
+"ViT-B-CLIP","CLIP-B","slip","CLIP","7","wrsa",0.58983110877051,2
+"ViT-B-CLIP","CLIP-B","slip","CLIP","5","wrsa",0.764016937431494,2
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","1","wrsa",0.686128564338497,3
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","2","wrsa",0.71162446697408,3
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","5","wrsa",0.758183183026512,3
+"ViT-B-SimCLR","SimCLR-B","slip","SimCLR","7","wrsa",0.609860796301151,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","7","wrsa",0.622760356762406,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","1","wrsa",0.699926108732438,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","2","wrsa",0.724942886705659,3
+"ViT-B-SLIP","SLIP-B","slip","SLIP","5","wrsa",0.777960939632818,3
+"ViT-L-CLIP","CLIP-L","slip","CLIP","2","wrsa",0.643326644059055,1
+"ViT-L-CLIP","CLIP-L","slip","CLIP","1","wrsa",0.645958881014529,1
+"ViT-L-CLIP","CLIP-L","slip","CLIP","5","wrsa",0.738880067000373,1
+"ViT-L-CLIP","CLIP-L","slip","CLIP","7","wrsa",0.591845693052596,1
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","1","wrsa",0.687618893679831,2
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","2","wrsa",0.704079799011239,2
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","5","wrsa",0.754276888678086,2
+"ViT-L-SimCLR","SimCLR-L","slip","SimCLR","7","wrsa",0.614403547482065,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","2","wrsa",0.720657203473417,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","1","wrsa",0.691436394959998,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","5","wrsa",0.765739183589551,2
+"ViT-L-SLIP","SLIP-L","slip","SLIP","7","wrsa",0.628137174668724,2
+"ViT-S-CLIP","CLIP-S","slip","CLIP","7","wrsa",0.594828280701983,3
+"ViT-S-CLIP","CLIP-S","slip","CLIP","1","wrsa",0.660243645125881,3
+"ViT-S-CLIP","CLIP-S","slip","CLIP","2","wrsa",0.680727865284525,3
+"ViT-S-CLIP","CLIP-S","slip","CLIP","5","wrsa",0.745028523244596,3
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","1","wrsa",0.660855444061946,1
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","2","wrsa",0.709959264063888,1
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","5","wrsa",0.760478450395312,1
+"ViT-S-SimCLR","SimCLR-S","slip","SimCLR","7","wrsa",0.622635001060801,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","1","wrsa",0.680169746402812,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","2","wrsa",0.700215719144854,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","5","wrsa",0.767863846544474,1
+"ViT-S-SLIP","SLIP-S","slip","SLIP","7","wrsa",0.606396365880113,1

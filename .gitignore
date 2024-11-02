@@ -2,11 +2,9 @@
 ###################
 github_rsync.sh
 
-# Data Files #
+# IDE Settings #
 ###################
-*data_saver/*
-*results/*
-datasets/*
+.vscode/
 
 # Checkpoints #
 ###################
