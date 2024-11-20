@@ -14,17 +14,21 @@
 - the [VISSL](https://vissl.ai/) (SSL) model zoo
 - ISL's [MiDas](https://github.com/isl-org/MiDaS) models zoo
 - FaceBook's [DINO](https://github.com/facebookresearch/dino) models...
+
+(Note, the [neural_data](./neural_data) is included as a legacy folder, to preserve compatibility with older versions of the Colaboratory tutorial.)
  
-To cite this repository, or the associated [manuscript](https://www.biorxiv.org/content/10.1101/2022.03.28.485868v1.abstract), please use the following BibTex:
+To cite this repository, or the associated [publication](https://www.nature.com/articles/s41467-024-53147-y), please use the following BibTex:
  
  ```bibtex
-@article{conwell2023pressures,
-  title={What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?},
-  author={Conwell, Colin and Prince, Jacob S and Kay, Kendrick N and Alvarez, George A and Konkle, Talia},
-  journal={BioRxiv},
-  year={2023},
-  url={https://www.biorxiv.org/content/10.1101/2022.03.28.485868v2}
-  publisher={Cold Spring Harbor Laboratory}
+@article{conwell2024large,
+ title={A large-scale examination of inductive biases shaping high-level visual representation in brains and machines},
+ author={Conwell, Colin and Prince, Jacob S and Kay, Kendrick N and Alvarez, George A and Konkle, Talia},
+ journal={Nature Communications},
+ volume={15},
+ number={1},
+ pages={9383},
+ year={2024},
+ publisher={Nature Publishing Group UK London} 
 }
 ```
 
