@@ -20,16 +20,16 @@
 To cite this repository, or the associated [article](https://www.nature.com/articles/s41467-024-53147-y), please use the following BibTex:
  
  ```bibtex
-@article{conwell2024large,
- title={A large-scale examination of inductive biases shaping high-level visual representation in brains and machines},
- author={Conwell, Colin and Prince, Jacob S and Kay, Kendrick N and Alvarez, George A and Konkle, Talia},
- journal={Nature Communications},
- volume={15},
- number={1},
- pages={9383},
- year={2024},
- publisher={Nature Publishing Group UK London} 
-}
+ @article{conwell2024large,
+  title={A large-scale examination of inductive biases shaping high-level visual representation in brains and machines},
+  author={Conwell, Colin and Prince, Jacob S and Kay, Kendrick N and Alvarez, George A and Konkle, Talia},
+  journal={Nature Communications},
+  volume={15},
+  number={1},
+  pages={9383},
+  year={2024},
+  publisher={Nature Publishing Group UK London} 
+ }
 ```
 
 ## 2024 Update: *DeepDive* to *DeepJuice*
