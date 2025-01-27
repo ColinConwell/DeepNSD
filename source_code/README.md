@@ -2,7 +2,7 @@
 
 ### 'Pressures' Quick Start
 
-['pressures'](./pressures/) is the main source code for "What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?" by Colin Conwell, Jacob S. Prince, Kendrick N. Kay, George A. Alvarez, and Talia Konkle (Nature Communications, In Press).
+['pressures'](./pressures/) is the main source code for the Nature Communications article ["What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?"](https://www.nature.com/articles/s41467-024-53147-y)
 
 Assuming your current working directory is this directory, you can get results for a target model by running the following.
 

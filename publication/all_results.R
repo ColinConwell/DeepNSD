@@ -540,7 +540,7 @@ temp_data <- results$max %>% filter(region == 'OTC') %>%
                mutate(rank = dense_rank(score)) %>% ungroup() %>%
                select(model, train_task, contrast, rank))}
 
-adjustments <- function(x) {mean(x) - (0.05 + mean(x) / 1.75)}
+label_offset <- function(x) {mean(x) - (0.05 + mean(x) / 1.75)}
 panel_sizes = c(0.5, 0.085, 0.1, 0.015, 0.06, 0.06, 0.06)
 
 temp_data %>% group_by(metric) %>%
@@ -565,7 +565,7 @@ temp_data %>% group_by(metric) %>%
                         score = mean_cl_boot(score))) +
   stat_summary(aes(fill = contrast, alpha = metric), 
                fun.data = mean_cl_boot, geom = 'crossbar') +
-  stat_summary(aes(y = 0.025, label = display_name), fun = adjustments, 
+  stat_summary(aes(y = 0.025, label = display_name), fun = label_offset,
                geom = 'text', size = 8 / .pt, angle = 45,
                data = . %>% filter(!metric %in% c()), hjust = 1) +
   facet_grid(~contrast, scales = 'free_x', space = 'free_x') +
