@@ -15,7 +15,7 @@
 - ISL's [MiDas](https://github.com/isl-org/MiDaS) models zoo
 - FaceBook's [DINO](https://github.com/facebookresearch/dino) models...
 
-(Note, the [neural_data](./neural_data) is included as a legacy folder, to preserve compatibility with older versions of the Colaboratory tutorial.)
+(Note, the [neural_data](./neural_data) is included as a legacy folder, to preserve compatibility with older versions of the Google Colaboratory tutorial.)
  
 To cite this repository, or the associated [article](https://www.nature.com/articles/s41467-024-53147-y), please use the following BibTex:
  
