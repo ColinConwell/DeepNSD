@@ -142,3 +142,4 @@ venv.bak/
 # R Files
 **/*.Rproj
 .Rproj.user
+.positai

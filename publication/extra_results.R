@@ -188,11 +188,11 @@ results$max %>% filter(metric %in% c('wrsa')) %>%
   arrange(contrast_set) %>% print(n = 72)
 
 target_betas <- c('Convolutional--Transformer' = 'Architecture: CNN vs Transformer',
-                  'Non-Contrastive--Contrastive' = 'Contrastive vs Non-Contrastive SSL',
-                  'SimCLR--SLIP' = 'Language Alignment: SimCLR vs SLIP',
-                  'denoising--class_object' = 'Taskonomy: Best vs Worst',
-                  'imagenet1k--taskonomy' = 'ResNet50: Taskonomy vs ImageNet1K',
-                  'taskonomy--average' = 'Taskonomy: Average',
+                  'Non-Contrastive--Contrastive' = 'Task: Contrastive vs Other SSL',
+                  'SimCLR--SLIP' = 'Task: Visual-SSL vs Language-Alignment',
+                  'denoising--class_object' = 'Task(onomy): Top vs Bottom (Ranked)',
+                  'imagenet1k--taskonomy' = 'Diet: Taskonomy vs ImageNet1K',
+                  'taskonomy--average' = 'Task(onomy): Average Difference',
                   'imagenet--imagenet21k' = 'Diet: ImageNet1K vs ImageNet21K',
                   'imagenet--places256' = 'Diet: ImageNet1K vs Places265',
                   'imagenet--vggface2' = 'Diet: ImageNet1K vs VGGFace2',
