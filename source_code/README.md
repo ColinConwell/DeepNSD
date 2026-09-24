@@ -2,9 +2,9 @@
 
 ### 'Pressures' Quick Start
 
-['pressures'](./pressures/) is the main source code for "What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?" by Colin Conwell, Jacob S. Prince, Kendrick N. Kay, George A. Alvarez, and Talia Konkle (Nature Communications, In Press).
+In [*pressures*](./pressures/), you will find the main source code for the reproducing the results in "What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?" by Colin Conwell, Jacob S. Prince, Kendrick N. Kay, George A. Alvarez, and Talia Konkle (Nature Communications, In Press).
 
-Assuming your current working directory is this directory, you can get results for a target model by running the following.
+Assuming your current working directory is this directory, you can get (main) results for a target model by running the following.
 
 ```python
 from pressures.main_analysis import *
@@ -19,4 +19,4 @@ More details on all aspects of our analysis are available in individual .py file
 
 ### Work in Progress: Versioning
 
-We hope to soon have either a Dockerfile or conda env file that will install the versioned packages we used when running this analysis. Stay tuned!
+We hope to soon have either a Dockerfile or Conda env file that will install the versioned packages we used when running this analysis. Stay tuned!

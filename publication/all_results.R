@@ -1487,30 +1487,12 @@ temp_data %>% mutate(index = rownames(.)) %>%
 
 # write.csv(temp_data, 'figure_data/Figure1C.csv', row.names=FALSE)
 
-## Stitch Source Data ----------------------------------------------------------
-
-pacman::p_load('readr', 'writexl')
-folder_path <- "figure_data"
-
-# Get all csv files in target folder
-file_paths <- list.files(folder_path, pattern = "\\.csv$", full.names = TRUE)
-
-temp_data <- list()
-
-for (file_path in file_paths) {
-  key <- tools::file_path_sans_ext(basename(file_path))
-  temp_data[[key]] <- read_csv(file_path)
-}
-
-# Write to excel file, each csv as separate sheet
-write_xlsx(temp_data, path = "source_data/source_data.xlsx")
-
 ## Supplementary Data ----------------------------------------------------------
 
 ### ············································································
 ###* Table: All Models ---------------------------------------------------------
 
-results$summary %>% filter(metric %in% c('crsa','wrsa')) %>%
+temp_data <- results$summary %>% filter(metric %in% c('crsa','wrsa')) %>%
   mutate(metric = str_to_upper(metric)) %>%
   rename(model_id = model_string, 
          architecture_kind = model_class) %>%
@@ -1521,20 +1503,25 @@ results$summary %>% filter(metric %in% c('crsa','wrsa')) %>%
          train_task, train_data, metric, score) %>%
   clean_names(case = 'title') %>%
   rename(`Model ID` = `Display Name`) %>%
-  pivot_wider(names_from = Metric, values_from = Score) %>% arrange(-WRSA) %>%
+  pivot_wider(names_from = Metric, values_from = Score) %>% arrange(-WRSA)
+
+temp_data %>%
   xtable(caption = 'List of All Models Tested', digits = 3) %>% 
   print(tabular.environment="longtable", caption.placement = 'top')
+
+write.csv(temp_data, 'figure_data/SupplementaryTable1.csv', row.names=FALSE)
 
 ### ············································································
 ###* Effective Dimensionality --------------------------------------------------
 
-read_csv('source_data/supplementary/dimensionality_check.csv') %>%
+plot_data <- read_csv('source_data/supplementary/dimensionality_check.csv') %>%
   mutate(dataset = str_replace(dataset, 'Val',''),
          dataset = str_replace(dataset, 'Shared','Shared-')) %>%
   mutate(model_layer_index = model_layer_index + 1) %>%
   filter(model_layer_index %% 2 == 0) %>%
-  mutate(model_layer_index = model_layer_index / 2) %>%
-  ggplot(aes(x = model_layer_index, y = effective_dimensions,
+  mutate(model_layer_index = model_layer_index / 2)
+
+ggplot(plot_data, aes(x = model_layer_index, y = effective_dimensions,
              color = dataset)) + geom_point() + geom_line() +
   theme_bw() + #easy_move_legend('bottom') +
   scale_x_continuous(breaks = seq(1,8,1)) +
@@ -1542,6 +1529,8 @@ read_csv('source_data/supplementary/dimensionality_check.csv') %>%
        color = 'Probe Image Set') +
   theme(text = element_text(size = 20),
         panel.grid = element_blank())
+
+# write.csv(plot_data, 'figure_data/SupplementaryFigure1.csv', row.names=FALSE)
 
 read_csv('source_data/supplementary/dimensionality_check.csv') %>%
   filter(model_layer_index %% 2 == 1) %>%
@@ -1563,66 +1552,6 @@ temp_data <- results$complete %>%
   mutate(depth_bin = cut(depth, breaks = seq(0.0, 1.05, .05),
                         labels=FALSE, include.lowest=TRUE),
          depth_bin = (depth_bin) / 20)
-
-### ············································································
-###* Prediction across Depth --------------------------------------------------
-
-temp_data <- results$complete %>% 
-  filter(score_set == 'test') %>%
-  filter(!is.na(compare_training)) %>%
-  filter(region == 'OTC') %>% 
-  filter(metric %in% c('crsa','wrsa')) %>%
-  mutate(training = ifelse(str_detect(model_string, 'random'), 
-                           'Untrained', 'Trained')) %>%
-  group_by(model_string, training, model_layer, 
-           model_layer_depth, metric) %>%
-  summarise(count = n(), score = mean(score, na.rm=TRUE))
-
-
-temp_data %>%
-  mutate(depth = model_layer_depth) %>% filter(depth > 0.50) %>%
-  mutate(depth_bin = cut(depth, breaks = seq(0.0, 1.05, .05),
-                         labels=FALSE, include.lowest=TRUE),
-         depth_bin = (depth_bin) / 20) %>%
-  group_by(model_string, training, depth_bin, metric) %>%
-  summarise(score = mean(score, na.rm=TRUE)) %>%
-  mutate(metric = str_to_upper(metric)) %>%
-  mutate(metric = str_to_upper(metric),
-         metric = str_replace(metric, 'CRSA', 'cRSA'),
-         metric = str_replace(metric, 'WRSA', 'veRSA')) %>%
-  ggplot(aes(x=depth_bin, y=score, color=training)) +
-  facet_wrap2(~metric, ncol=2, scales='free_x') +
-  scale_color_manual(values=c('purple','gray')) +
-  geom_line(aes(group=model_string), alpha=0.1) +
-  geom_hline(aes(yintercept = 0.7975), 
-             data = noise_ceilings$group_avg, 
-             linetype = 1, size = 2, color = 'gray') +
-  #stat_summary(fun.data = mean_cl_boot, geom='crossbar') +
-  stat_summary(fun.y = mean, geom='line', size=3) +
-  stat_summary(fun.y = mean, geom='point', size=3) +
-  coord_cartesian(ylim=c(0.0, 0.805), clip = 'off') +
-  labs(x = 'Relative Layer Depth (Binned)',
-       y = '*r<sub>Pearson</sub>*', color = '') +
-  theme_bw() + easy_move_legend('bottom') +
-  scale_y_continuous(expand = c(0,0), sec.axis = add_ev_axis,
-                     breaks = seq(0,0.8,0.2)) +
-  theme(text = element_text(size = 10*(1/0.8), face = 'plain'),
-        #legend.position=c(.78,0.55),
-        #panel.border = element_rect(fill=NA),
-        #plot.margin = margin(t=1,r=1,b=3,l=1, "cm"),
-        plot.margin = margin(t=1,r=1,b=1,l=1, "cm"),
-        axis.ticks.y = element_line(),
-        axis.line.y = element_line(),
-        axis.line.x = element_line(),
-        axis.ticks.length = unit(0.1, "cm"),
-        axis.title.y.left = element_markdown(),
-        axis.title.y.right = element_markdown(),
-        strip.background = element_blank(),
-        #strip.text = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_blank())
-
-#ggsave('_figure_drafts/depth_scores.png', width=8, height=4.5, dpi=300)
 
 ### ············································································
 ###* Inter-Subject Variation ---------------------------------------------------
@@ -1664,7 +1593,7 @@ results$max %>% filter(region == 'OTC') %>%
 # subject-wise rank order correlation visual:
 results$max %>% filter(region == 'OTC') %>%
   filter(metric %in% c('crsa','wrsa')) %>%
-    mutate(metric = str_to_upper(metric)) %>%
+  mutate(metric = str_to_upper(metric)) %>%
   filter(subj_id %in% c(1,5)) %>%
   select(model_string, metric, subj_id, score) %>%
   filter(!str_detect(model_string, 'random|taskonomy|ipcl')) %>%
@@ -1713,14 +1642,18 @@ rank_permutations %>% group_by(metric) %>%
 
 ### ----- Supplement Figure: Variation in Subjects
 
-left_join(results$summary %>% select(model_string, rank),
+plot_data <- results$max %>% filter(region == 'OTC') %>%
+  filter(metric %in% c('crsa','wrsa')) %>%
+  select(model_string, display_name, metric, subj_id, score) %>%
+  left_join(results$summary %>% select(model_string, rank),
           relationship='many-to-many') %>%
   distinct(model_string, display_name, metric, 
            subj_id, score, rank) %>%
   mutate(metric = str_to_upper(metric),
          metric = str_replace(metric, 'CRSA', 'cRSA'),
-         metric = str_replace(metric, 'WRSA', 'veRSA')) %>%
-  ggplot(aes(x = rank, y = score, color = subj_id, 
+         metric = str_replace(metric, 'WRSA', 'veRSA'))
+  
+ggplot(plot_data, aes(x = rank, y = score, color = subj_id, 
              shape = metric, linetype = metric)) + 
   theme_classic() + geom_point(cex = 3, alpha = 0.5, stroke = 1) +
   geom_rect(aes(ymin=ymin, ymax=ymax, fill=subj_id,
@@ -1755,6 +1688,66 @@ left_join(results$summary %>% select(model_string, rank),
         panel.grid.minor = element_blank(),
         panel.grid.major = element_blank())
 
+write.csv(plot_data, 'figure_data/SupplementaryFigure2.csv', row.names=FALSE)
+
+### ············································································
+###* Prediction across Depth --------------------------------------------------
+
+plot_data <- results$complete %>% 
+  filter(score_set == 'test') %>%
+  filter(!is.na(compare_training)) %>%
+  filter(region == 'OTC') %>% 
+  filter(metric %in% c('crsa','wrsa')) %>%
+  mutate(training = ifelse(str_detect(model_string, 'random'), 
+                           'Untrained', 'Trained')) %>%
+  group_by(model_string, training, model_layer, 
+           model_layer_depth, metric) %>%
+  summarise(count = n(), score = mean(score, na.rm=TRUE)) %>%
+  mutate(depth = model_layer_depth) %>% filter(depth > 0.50) %>%
+  mutate(depth_bin = cut(depth, breaks = seq(0.0, 1.05, .05),
+                         labels=FALSE, include.lowest=TRUE),
+         depth_bin = (depth_bin) / 20) %>%
+  group_by(model_string, training, depth_bin, metric) %>%
+  summarise(score = mean(score, na.rm=TRUE)) %>%
+  mutate(metric = str_to_upper(metric)) %>%
+  mutate(metric = str_to_upper(metric),
+         metric = str_replace(metric, 'CRSA', 'cRSA'),
+         metric = str_replace(metric, 'WRSA', 'veRSA'))
+
+ggplot(plot_data, aes(x=depth_bin, y=score, color=training)) +
+  facet_wrap2(~metric, ncol=2, scales='free_x') +
+  scale_color_manual(values=c('purple','gray')) +
+  geom_line(aes(group=model_string), alpha=0.1) +
+  geom_hline(aes(yintercept = 0.7975), 
+             data = noise_ceilings$group_avg, 
+             linetype = 1, size = 2, color = 'gray') +
+  #stat_summary(fun.data = mean_cl_boot, geom='crossbar') +
+  stat_summary(fun.y = mean, geom='line', size=3) +
+  stat_summary(fun.y = mean, geom='point', size=3) +
+  coord_cartesian(ylim=c(0.0, 0.805), clip = 'off') +
+  labs(x = 'Relative Layer Depth (Binned)',
+       y = '*r<sub>Pearson</sub>*', color = '') +
+  theme_bw() + easy_move_legend('bottom') +
+  scale_y_continuous(expand = c(0,0), sec.axis = add_ev_axis,
+                     breaks = seq(0,0.8,0.2)) +
+  theme(text = element_text(size = 10*(1/0.8), face = 'plain'),
+        #legend.position=c(.78,0.55),
+        #panel.border = element_rect(fill=NA),
+        #plot.margin = margin(t=1,r=1,b=3,l=1, "cm"),
+        plot.margin = margin(t=1,r=1,b=1,l=1, "cm"),
+        axis.ticks.y = element_line(),
+        axis.line.y = element_line(),
+        axis.line.x = element_line(),
+        axis.ticks.length = unit(0.1, "cm"),
+        axis.title.y.left = element_markdown(),
+        axis.title.y.right = element_markdown(),
+        strip.background = element_blank(),
+        #strip.text = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank())
+
+write.csv(plot_data, 'figure_data/SupplementaryFigure3.csv', row.names=FALSE)
+
 # ··············································································
 ###* Early Visual Cortex (EVC) -------------------------------------------------
 
@@ -1774,6 +1767,24 @@ results$max %>% group_by(model_string, region, metric) %>%
   geom_smooth(method = 'lm') + 
   theme(text = element_text(size = 20)) +
   stat_cor(label.x = 0.15, label.y = 0.5, method = 'spearman')
+
+## Stitch Source Data ----------------------------------------------------------
+
+pacman::p_load('readr', 'writexl')
+folder_path <- "figure_data"
+
+# Get all csv files in target folder
+file_paths <- list.files(folder_path, pattern = "\\.csv$", full.names = TRUE)
+
+temp_data <- list()
+
+for (file_path in file_paths) {
+  key <- tools::file_path_sans_ext(basename(file_path))
+  temp_data[[key]] <- read_csv(file_path)
+}
+
+# Write to excel file, each csv as separate sheet
+write_xlsx(temp_data, path = "source_data.xlsx")
 
 # ··············································································
 ## Extra Analyses --------------------------------------------------------------

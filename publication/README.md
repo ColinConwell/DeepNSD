@@ -1,4 +1,4 @@
-Reproducing "What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?"](https://www.biorxiv.org/content/10.1101/2022.03.28.485868v1.abstract)
+## Source Data for Reproducability
 
 In this sub-repository, you will find the [source data](source_data/) and [analysis code](all_results.R) for *directly* (numerically) reproducing results and figures in the manuscript "What can 1.8 billion regressions tell us about the pressures shaping high-level visual representation in brains and machines?" by Colin Conwell, Jacob S. Prince, Kendrick N. Kay, George A. Alvarez, and Talia Konkle, currently in press at Nature Communications.
 
