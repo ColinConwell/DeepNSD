@@ -15,8 +15,3 @@ results = run_model_on_benchmark(model_uid, benchmark)
 ```
 
 More details on all aspects of our analysis are available in individual .py files (e.g. in [aux_scripts]['./pressures/aux_scripts]) or jupyter [notebooks](./pressures/notebooks/).
-
-
-### Work in Progress: Versioning
-
-We hope to soon have either a Dockerfile or conda env file that will install the versioned packages we used when running this analysis. Stay tuned!

@@ -1,10 +1,14 @@
 # Specific Files #
 ###################
+scratchpad.R
 github_rsync.sh
 
 # IDE Settings #
 ###################
 .vscode/
+.cursor/
+.cursorignore
+AGENTS.md
 
 # Checkpoints #
 ###################
@@ -13,6 +17,16 @@ github_rsync.sh
 *.pyo
 __pycache__/
 .ipynb_checkpoints/
+
+# R Files
+*.Rproj
+.RData
+.Rproj.user
+.Rhistory
+
+# Dataset Files #
+###################
+_config.yml
 
 # Compiled source #
 ###################
@@ -53,93 +67,3 @@ Thumbs.db
 **/.DS_Store
 .DS_Store
 .DS_Store?
-
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Sphinx documentation
-docs/_build/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# R Files
-**/*.Rproj
-.Rproj.user
-.positai
