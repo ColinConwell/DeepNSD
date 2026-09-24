@@ -14,15 +14,52 @@ PYCORTEX_DB_ZIP_NAME = "pycortex_db_NSD.zip"
 _GDRIVE_FILE_ID = re.compile(r"/file/d/([a-zA-Z0-9_-]+)")
 
 
+def _nsd_config_path():
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "brain_data", "_config.yml"))
+
+
+def resolve_nsd_path():
+    """Directory that holds nsddata/, from the environment, _config.yml, or a prompt."""
+    if os.environ.get("NSD_PATH"):
+        return os.path.abspath(os.path.expanduser(os.environ["NSD_PATH"]))
+
+    cfg = _nsd_config_path()
+    if os.path.isfile(cfg):
+        with open(cfg) as handle:
+            for line in handle:
+                key, _, value = line.split("#", 1)[0].partition(":")
+                if key.strip() == "NSD_PATH" and value.strip():
+                    return os.path.abspath(os.path.expanduser(value.strip().strip("'\"")))
+
+    print("NSD_PATH is not set. Enter the NSD data directory, or 'cancel'.")
+    if not sys.stdin.isatty():
+        raise FileNotFoundError("NSD_PATH is not set.")
+
+    while True:
+        entered = input("NSD path: ").strip()
+        if not entered or entered.lower() == "cancel":
+            raise FileNotFoundError("NSD_PATH was not provided.")
+        path = os.path.abspath(os.path.expanduser(entered))
+        if not os.path.isdir(path):
+            if input(f"Create {path}? [y/N]: ").strip().lower() not in ("y", "yes"):
+                continue
+            os.makedirs(path)
+        os.makedirs(os.path.dirname(cfg), exist_ok=True)
+        with open(cfg, "a") as handle:
+            handle.write(f"NSD_PATH: {path}\n")
+        os.environ["NSD_PATH"] = path
+        return path
+
+
 def default_download_dir():
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "pycortex"))
+    return os.path.join(resolve_nsd_path(), "pycortex")
 
 
 def default_pycortex_config_path():
     """User options.cfg path, without importing pycortex (import reads this file)."""
-    try:
+    try: # if appdirs is installed, use it to get the user data directory
         import appdirs
-        userdir = appdirs.user_data_dir("pycortex", "JamesGao")
+        userdir = appdirs.user_data_dir("pycortex")
     except ImportError:
         userdir = os.path.join(os.path.expanduser("~"), ".config", "pycortex")
     return os.path.join(userdir, "options.cfg")
@@ -35,14 +72,14 @@ def gdrive_file_id(url):
     return match.group(1)
 
 
-def download_gdrive_file(url, output_path, force=False):
+def download_gdrive_file(url, output_path, force_redownload=False):
     """Download a Google Drive file. Reuse output_path when it is already a valid zip."""
     import gdown
 
     output_path = os.path.abspath(output_path)
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    if not force and os.path.isfile(output_path):
+    if not force_redownload and os.path.isfile(output_path):
         try:
             check_zip(output_path)
             print(f"Using existing archive: {output_path}")
@@ -110,12 +147,12 @@ def _extract_is_complete(zip_path, dest_dir):
     return True # archive is complete
 
 
-def unzip_archive(zip_path, dest_dir, force=False):
+def unzip_archive(zip_path, dest_dir, force_redownload=False):
     zip_path = os.path.abspath(zip_path)
     dest_dir = os.path.abspath(dest_dir)
     os.makedirs(dest_dir, exist_ok=True)
 
-    if not force and _extract_is_complete(zip_path, dest_dir):
+    if not force_redownload and _extract_is_complete(zip_path, dest_dir):
         print(f"Archive already extracted: {dest_dir}")
         return dest_dir
 
@@ -148,18 +185,21 @@ def find_filestore(root):
     return sorted(parents, key=lambda path: path.count(os.sep))[0]
 
 
-def download_check_unzip_pycortex_db(download_dir=None, gdrive_url=PYCORTEX_DB_GDRIVE_URL, force=False):
+def download_pycortex_db(download_dir=None, gdrive_url=PYCORTEX_DB_GDRIVE_URL, force_redownload=False):
     download_dir = os.path.abspath(download_dir or default_download_dir())
     os.makedirs(download_dir, exist_ok=True)
     zip_path = os.path.join(download_dir, PYCORTEX_DB_ZIP_NAME)
-    extract_dir = os.path.join(download_dir, "pycortex_db_NSD")
 
-    zip_path = download_gdrive_file(gdrive_url, zip_path, force=force)
+    zip_path = download_gdrive_file(gdrive_url, zip_path, force_redownload=force_redownload)
     check_zip(zip_path)
-    extract_dir = unzip_archive(zip_path, extract_dir, force=force)
+    extract_dir = unzip_archive(zip_path, download_dir, force_redownload=force_redownload)
     db_path = find_filestore(extract_dir)
+    for name in os.listdir(download_dir):
+        path = os.path.join(download_dir, name)
+        if os.path.isfile(path) and (path == zip_path or name.endswith(".part") or name.endswith(".zip")):
+            os.remove(path)
     print(f"Pycortex filestore: {db_path}")
-    return db_path
+    return db_path # return the path to the downloaded filestore
 
 
 def bind_pycortex_filestore(db_path):
@@ -186,60 +226,31 @@ def setup_pycortex_NSD_config(pycortex_config_path, pycortex_db_NSD_path):
     db_path = os.path.abspath(pycortex_db_NSD_path)
     os.makedirs(os.path.dirname(os.path.abspath(config_fn)), exist_ok=True)
 
+    config = configparser.ConfigParser()
     if os.path.isfile(config_fn):
-        with open(config_fn) as handle:
-            lines = handle.readlines()
-
-        in_basic = False
-        found = False
-        new_lines = []
-        for line in lines:
-            stripped = line.strip()
-            if stripped.startswith("[") and stripped.endswith("]"):
-                if in_basic and not found:
-                    new_lines.append(f"filestore = {db_path}\n")
-                    found = True
-                in_basic = stripped.lower() == "[basic]"
-            if in_basic and stripped.lower().startswith("filestore"):
-                new_lines.append(f"filestore = {db_path}\n")
-                found = True
-                continue
-            new_lines.append(line)
-
-        if not found:
-            if new_lines and not new_lines[-1].endswith("\n"):
-                new_lines[-1] = new_lines[-1] + "\n"
-            new_lines.append("\n[basic]\n" if not in_basic else "")
-            new_lines.append(f"filestore = {db_path}\n")
-
-        with open(config_fn, "w") as handle:
-            handle.writelines(line for line in new_lines if line != "")
-    else:
-        config = configparser.ConfigParser()
-        config["basic"] = {"filestore": db_path}
-        with open(config_fn, "w") as handle:
-            config.write(handle)
+        config.read(config_fn)
+    if not config.has_section("basic"):
+        config.add_section("basic")
+    config.set("basic", "filestore", db_path)
+    with open(config_fn, "w") as handle:
+        config.write(handle)
 
     bind_pycortex_filestore(db_path)
     print(f"Pycortex config file updated with new 'filestore' path: {db_path}")
     return config_fn
 
 
-def main(pycortex_config_path=None, pycortex_db_NSD_path=None, download_dir=None,
-         gdrive_url=PYCORTEX_DB_GDRIVE_URL, force=False):
-    """Download the NSD pycortex database if needed and point pycortex at it.
-
-    Every argument is optional. Omitted paths use the user pycortex config and
-    the default download directory next to this script.
-    """
+def setup_pycortex_NSD(pycortex_config_path=None, pycortex_db_NSD_path=None, download_dir=None,
+         gdrive_url=PYCORTEX_DB_GDRIVE_URL, force_redownload=False):
+    """Download the NSD pycortex database if needed and point pycortex at it."""
     db_path = pycortex_db_NSD_path
-    if force or not db_path or not os.path.isdir(db_path):
-        db_path = download_check_unzip_pycortex_db(
+    if force_redownload or not db_path or not os.path.isdir(db_path):
+        db_path = download_pycortex_db(
             download_dir=download_dir,
             gdrive_url=gdrive_url,
-            force=force,
+            force_redownload=force_redownload,
         )
-    else:
+    else: # if the filestore already exists, use it
         db_path = os.path.abspath(db_path)
         print(f"Using existing pycortex filestore: {db_path}")
 
@@ -256,6 +267,6 @@ if __name__ == "__main__":
     parser.add_argument("--pycortex_db_NSD_path", type=str, default=None)
     parser.add_argument("--download_dir", type=str, default=None)
     parser.add_argument("--gdrive_url", type=str, default=PYCORTEX_DB_GDRIVE_URL)
-    parser.add_argument("--force", action="store_true")
+    parser.add_argument("--force-redownload", action="store_true")
     args = parser.parse_args()
-    main(**vars(args))
+    setup_pycortex_NSD(**vars(args))
